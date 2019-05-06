@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+
+    canvas{
+      margin: 100px;
+      background: url('./刮奖.png') center center no-repeat;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+
+  <script>
+    const ctx = canvas.getContext('2d');
+    
+    // 橡皮擦的大小.
+    const ERASER_SIZE = 15;
+
+    function drawRect(x,y,w,h) {
+      ctx.beginPath();
+      ctx.rect(x,y,w,h);
+      ctx.fill();
+    }
+
+    function drawCircle(centerX, centerY, radius) {
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, radius, 0, Math.PI * 2, false);
+      ctx.fill();
+    }
+
+    function eraser(x, y) {
+      ctx.save();
+      drawCircle(x,y, ERASER_SIZE);
+      ctx.clip();
+      ctx.clearRect(0,0, canvas.width, canvas.height);
+      ctx.restore();
+    }
+
+    drawRect(0,0, canvas.width, canvas.height);
+
+    function windowToCanvas(e) {
+			let x = e.clientX,
+				y = e.clientY,
+				bbox = canvas.getBoundingClientRect();
+
+			return {
+				x: x - bbox.left,
+				y: y - bbox.top
+			}
+		}
+    
+    function onMouseMove(e) {
+      const {x,y} = windowToCanvas(e);
+      eraser(x,y);
+    }
+
+    function onMouseUp(e) {
+      canvas.removeEventListener('mousemove', onMouseMove);
+      canvas.removeEventListener('mouseup', onMouseUp);
+    }
+
+    canvas.addEventListener('mousedown', function (e) {
+      canvas.addEventListener('mousemove', onMouseMove);
+      canvas.addEventListener('mouseup', onMouseUp);
+    });
+  </script>
+</body>
+</html>
