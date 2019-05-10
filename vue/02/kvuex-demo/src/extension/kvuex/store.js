@@ -27,11 +27,9 @@ export class Store{
 
     if(typeof action === 'function'){
       const ctx = {
-        state: this.state,
-        mutations: this.mutations,
-        commit: this.commit,
-        dispatch: this.dispatch,
-        actions: this.actions
+        state: this.state,       
+        commit: this.commit.bind(this),
+        dispatch: this.dispatch.bind(this),
       };
 
       return action(ctx, payload);

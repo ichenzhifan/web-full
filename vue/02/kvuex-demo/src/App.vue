@@ -2,16 +2,11 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <!-- <router-link to="/login" v-if="!$store.state.isLogin">登录</router-link> -->
-      <!-- <span v-else>欢迎回来</span> -->
+      <router-link to="/about">About</router-link>
     </div>
     <router-view/>
   </div>
 </template>
-<script>
-
-</script>
 
 <style>
 #app {
