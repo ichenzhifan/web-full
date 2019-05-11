@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+     <p>{{name}}</p>
+     <p i-text="name"></p>
+     <p>{{age}}</p>
+     <p>
+      <span>{{age}}</span>
+     </p>
+     <input type="text" i-model="name">
+     <button @click="changeName">呵呵</button>
+     <div i-html="html"></div>
+  </div>
+  <script>
+  </script>
+</body>
+
+</html>
