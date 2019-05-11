@@ -67,7 +67,7 @@ export default class Compiler {
     // 检查是否为插值文本.
     // <p>{{name}}</p>
     if (INTERPOLATION.test(node.textContent)) {
-      this.update(node, RegExp.$1, 'text');
+      this.update(node, RegExp.$1.trim(), 'text');
     }
   }
 

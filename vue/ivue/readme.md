@@ -42,6 +42,7 @@ const vm = new IVue({
 });
 ```
 # 支持的功能有:
+- 插值: {{name}}
 - 指令: i-text, i-html, i-model
 - 事件绑定: @click,...
 
