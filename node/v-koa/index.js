@@ -10,12 +10,16 @@ class VKoa {
   }
 
 	createContext(req, res) {
+		// 使用Object.create的方式, 创建一个新的对象
+		// 继承参数里对象的原型. 类似于深拷贝.
 		const ctx = Object.create(context);
 		ctx.request = Object.create(request);
 		ctx.response = Object.create(response);
 
+		// 
 		ctx.req = ctx.request.req = req;
 		ctx.res = ctx.response.res = res;
+
 		return ctx;
 	}
 

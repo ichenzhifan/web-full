@@ -24,10 +24,10 @@ class Router {
 
 	routes() {
 		return async (ctx, next) => {
-      const { url, method } = ctx;      
+			const { url, method } = ctx;
 			const route = this.stack.find((s) => s.path === url && s.method === method);
-      
-      if (route && typeof route.handler === 'function') {
+
+			if (route && typeof route.handler === 'function') {
 				route.handler(ctx, next);
 				return;
 			}
