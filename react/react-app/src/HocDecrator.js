@@ -9,7 +9,19 @@ function withLog(BaseComponent) {
 	</React.Fragment>;
 }
 
+function enhanceLog(name) {
+	return BaseComponent => {
+		return props => (
+			<React.Fragment>
+				<p>this is withlog</p>
+				<BaseComponent {...props} name={name}/>
+			</React.Fragment>
+		);
+	}
+}
+
 @withLog
+@enhanceLog('joke')
 class Hello extends Component {
 	constructor(props) {
 		super(props);
